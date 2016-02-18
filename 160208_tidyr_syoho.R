@@ -39,6 +39,7 @@ knitr::kable(head(df_4))
 df5 <- tidyr::separate(data = df_4, col = colll, into = c("Sepal.Length","Sepal.Width"), sep = "-")
 knitr::kable(head(df5))
 ##注意！ばらした後の変数のデータ型は文字型だよ。
+##as.numericなどで変換することが必要だよ。
 class(df5$Sepal.Length)
 
 

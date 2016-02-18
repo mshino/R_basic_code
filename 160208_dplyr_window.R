@@ -33,11 +33,11 @@ head(mutate(d,ntile=ntile(bwt , 4)))
 
 #offset関数（インターバルとかで使うかな）
 ##lead関数：前方行にずらす、lag関数：後方行にずらす（ずれた部分は欠損値になる）
-head(mutate(d,lead_bwt=lead(bwt)))
+tail(mutate(d,lead_bwt=lead(bwt)))
 head(mutate(d,lag_bwt=lag(bwt)))
 
 ##前方行、後方行にnずらすときは、n=で指定
-head(mutate(d,lead_bwt=lead(bwt,n=2)))
+tail(mutate(d,lead_bwt=lead(bwt,n=2)))
 head(mutate(d,lag_bwt=lag(bwt,n=2)))
 
 ##さらに欠損値部分を0で穴埋めできる
@@ -51,7 +51,7 @@ head(mutate(d,lag_bwt=lag(bwt,order_by=age)))
 ##グループ毎のoffset設定もできる
 ###lead
 grouped.d <- group_by(d,smoke)
-mutate(grouped.d,lead_bwt=lead(bwt))
+tail(mutate(grouped.d,lead_bwt=lead(bwt)))
 ###lag
 grouped.d <- group_by(d,smoke)
 mutate(grouped.d,lag_bwt=lag(bwt))
