@@ -17,6 +17,7 @@ filter(d,smoke==1,age<=20,bwt<=2000|bwt>=4000)
 ##1)関数の中にデータを指定。オプションを記述していく。
 filter(d,smoke==1,age<=20,bwt<=2000)
 
+
 ##2)dplyrを宣言し、データ指定とオプションを指定する。
 dplyr::filter(d,smoke==1,age<=20,bwt<=2000)
 
@@ -24,7 +25,7 @@ dplyr::filter(d,smoke==1,age<=20,bwt<=2000)
 ##2)のほうが便利だよ。%>%で複数のdplyr処理を直列でつなげることができる
 ##1)だと前の処理の引継が難しいよ。
 dplyr::filter(d,smoke==1,age<=20,bwt<=2000) %>%
-dplyr::select(low,age,lwt)
+       select(low,age,lwt)
 
 
 #selectによる列抽出（3段目は指定外変数以外の抽出）
@@ -43,7 +44,6 @@ head(
   mutate(d,bwt.kg=bwt/1000,
          bwt.kg.cat=cut(bwt.kg,breaks=c(0,2.5,5)))
   )
-
 
 #arrangeで並び替え
 ##指定している変数の順番に昇順でならびかえ

@@ -41,11 +41,11 @@ tail(mutate(d,lead_bwt=lead(bwt,n=2)))
 head(mutate(d,lag_bwt=lag(bwt,n=2)))
 
 ##さらに欠損値部分を0で穴埋めできる
-head(mutate(d,lead_bwt=lead(bwt,default=0,n=2)))
+tail(mutate(d,lead_bwt=lead(bwt,default=0,n=2)))
 head(mutate(d,lag_bwt=lag(bwt,default=0,n=2)))
 
 ##ソート列も指定できる
-head(mutate(d,lead_bwt=lead(bwt,order_by=age)))
+tail(mutate(d,lead_bwt=lead(bwt,order_by=age)))
 head(mutate(d,lag_bwt=lag(bwt,order_by=age)))
 
 ##グループ毎のoffset設定もできる
@@ -76,9 +76,9 @@ library(RcppRoll)
 #枠(n)を設定⇒枠の中心から前後の統計量
 head(mutate(d,roll_max_center= roll_max(bwt , n=3 ,align="center" , fill=NA)))
 #枠(n)を設定⇒枠の上端から後ろの統計量
-head(mutate(d,roll_left_center= roll_max(bwt , n=3 ,align="left" , fill=NA)))
+head(mutate(d,roll_max_left= roll_max(bwt , n=3 ,align="left" , fill=NA)))
 #枠(n)を設定⇒枠の下端から前の統計量
-head(mutate(d,roll_right_center= roll_max(bwt , n=3 ,align="right" , fill=NA)))
+head(mutate(d,roll_max_right= roll_max(bwt , n=3 ,align="right" , fill=NA)))
 
 #roll_mean:平均（移動平均はこれで）
 head(mutate(d,roll_mean_center= roll_mean(bwt , n=3 ,align="center" , fill=NA)))
